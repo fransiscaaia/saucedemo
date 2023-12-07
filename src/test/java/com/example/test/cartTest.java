@@ -1,7 +1,6 @@
 package com.example.test;
 
 import com.example.saucedemo.CartPage;
-import com.example.saucedemo.LoginPage;
 import com.example.saucedemo.ProductPage;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;

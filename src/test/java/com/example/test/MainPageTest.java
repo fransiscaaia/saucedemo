@@ -1,20 +1,12 @@
 package com.example.test;
 
-import com.example.saucedemo.CartPage;
-import com.example.saucedemo.LoginPage;
-import com.example.saucedemo.ProductPage;
-import org.junit.jupiter.api.*;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.openqa.selenium.By;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 public class MainPageTest {
     public static WebDriver driver;

@@ -3,7 +3,6 @@ package com.example.test;
 import com.example.saucedemo.LoginPage;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.bidi.log.Log;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
