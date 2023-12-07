@@ -16,7 +16,7 @@ public class ProductPage {
     @FindBy(xpath = "//*[@data-test='product_sort_container']")
     public WebElement productFilter;
 
-    @FindBy(xpath = "//*[@class='inventory_item_name']")
+    @FindBy(xpath = "//*[@class='inventory_item_name ']")
     public WebElement productName;
 
     public ProductPage(WebDriver driver) {
