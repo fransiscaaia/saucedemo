@@ -39,6 +39,18 @@ public class LoginTest extends MainPageTest {
     }
 
     @Test
+    public void loginWithLockedUser() {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.userNameField.sendKeys("locked_out_user");
+        loginPage.passwordField.sendKeys("secret_sauce");
+        loginPage.loginButton.click();
+
+        assertTrue(driver.findElement(By.xpath(
+                        "//*[text()='Epic sadface: Sorry, this user has been locked out.']"))
+                .isDisplayed());
+    }
+
+    @Test
     public void loginWithInvalidUsername() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.userNameField.sendKeys("user_first");

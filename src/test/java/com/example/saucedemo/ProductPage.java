@@ -19,6 +19,12 @@ public class ProductPage {
     @FindBy(xpath = "//*[@class='inventory_item_name ']")
     public WebElement productName;
 
+    @FindBy(id = "react-burger-menu-btn")
+    public WebElement hamburgerMenu;
+
+    @FindBy(id = "logout_sidebar_link")
+    public WebElement logout;
+
     public ProductPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }

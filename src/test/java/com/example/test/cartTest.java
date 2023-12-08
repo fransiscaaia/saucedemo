@@ -1,6 +1,7 @@
 package com.example.test;
 
 import com.example.saucedemo.CartPage;
+import com.example.saucedemo.LoginPage;
 import com.example.saucedemo.ProductPage;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -66,6 +67,7 @@ public class cartTest extends MainPageTest {
         productPage.shoppingCart.click();
 
         cartPage = new CartPage(driver);
+        LoginPage loginPage = new LoginPage(driver);
 
         assertTrue(cartPage.shoppingCart.isDisplayed());
         assertTrue(cartPage.shoppingCartBadge.isDisplayed());
@@ -86,25 +88,28 @@ public class cartTest extends MainPageTest {
                 "//*[text()='Error: First Name is required']")).isDisplayed());
 
         //continue checkout with only input firstname
-        cartPage.firstNameField.sendKeys("Testing");
+        cartPage.firstNameField.sendKeys("dummy");
         cartPage.continueButton.click();
         assertTrue(driver.findElement(By.xpath(
                 "//*[text()='Error: Last Name is required']")).isDisplayed());
 
         //continue checkout with doesn't input postal code
-        cartPage.lastNameField.sendKeys("Aja");
+        cartPage.lastNameField.sendKeys("user");
         cartPage.continueButton.click();
         assertTrue(driver.findElement(By.xpath(
                 "//*[text()='Error: Postal Code is required']")).isDisplayed());
 
         //continue checkout with all fields
-        cartPage.postalCodeField.sendKeys("20231");
+        cartPage.postalCodeField.sendKeys("28654");
         cartPage.continueButton.click();
+        assertTrue(driver.findElement(By.className("cart_list")).getText().contains("Sauce Labs Backpack"));
+        assertTrue(driver.findElement(By.className("cart_list")).getText().contains("Sauce Labs Bike Light"));
         assertTrue(driver.findElement(By.xpath("//*[@class='summary_info']")).isDisplayed());
         assertTrue(driver.findElement(By.xpath("//*[@class='summary_info_label']")).isDisplayed());
         assertTrue(driver.findElement(By.xpath("//*[@class='summary_value_label']")).isDisplayed());
         assertTrue(driver.findElement(By.xpath("//*[@class='summary_subtotal_label']")).isDisplayed());
         assertTrue(driver.findElement(By.xpath("//*[contains(@class, 'summary_total_label')]")).isDisplayed());
+        assertTrue(driver.findElement(By.xpath("//*[contains(@class, 'summary_total_label')]")).getText().contains("43.18"));
         assertTrue(cartPage.finishButton.isDisplayed());
 
         cartPage.finishButton.click();
@@ -117,5 +122,15 @@ public class cartTest extends MainPageTest {
         //back to home
         backToHomeButton.click();
         assertTrue(productPage.productName.isDisplayed());
+        assertTrue(productPage.hamburgerMenu.isDisplayed());
+
+        //logout
+        productPage.hamburgerMenu.click();
+        productPage.logout.click();
+
+        //loginpage
+        assertTrue(loginPage.userNameField.isDisplayed());
+        assertTrue(loginPage.passwordField.isDisplayed());
+        assertTrue(loginPage.loginButton.isDisplayed());
     }
 }
